@@ -1,0 +1,6 @@
+@Staffmeer.Web_HostAddress = http://localhost:5012
+
+GET {{Staffmeer.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
