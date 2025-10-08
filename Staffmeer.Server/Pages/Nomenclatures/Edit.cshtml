@@ -1,0 +1,55 @@
+﻿@page
+@model Staffmeer.Server.Pages.Nomenclatures.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Nomenclature</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Nomenclature.Id" />
+            <div class="form-group">
+                <label asp-for="Nomenclature.SerialNumber" class="control-label"></label>
+                <input asp-for="Nomenclature.SerialNumber" class="form-control" />
+                <span asp-validation-for="Nomenclature.SerialNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nomenclature.Name" class="control-label"></label>
+                <input asp-for="Nomenclature.Name" class="form-control" />
+                <span asp-validation-for="Nomenclature.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nomenclature.NomenclatureTypeId" class="control-label"></label>
+                <select asp-for="Nomenclature.NomenclatureTypeId" class="form-control" asp-items="ViewBag.NomenclatureTypeId"></select>
+                <span asp-validation-for="Nomenclature.NomenclatureTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nomenclature.BrandnameId" class="control-label"></label>
+                <select asp-for="Nomenclature.BrandnameId" class="form-control" asp-items="ViewBag.BrandnameId"></select>
+                <span asp-validation-for="Nomenclature.BrandnameId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nomenclature.CounterpartyId" class="control-label"></label>
+                <select asp-for="Nomenclature.CounterpartyId" class="form-control" asp-items="ViewBag.CounterpartyId"></select>
+                <span asp-validation-for="Nomenclature.CounterpartyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

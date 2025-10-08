@@ -11,9 +11,9 @@ namespace Staffmeer.Server.Pages.Employees
 {
     public class DeleteModel : PageModel
     {
-        private readonly Staffmeer.Server.Models.ApplicationContext _context;
+        private readonly Staffmeer.Server.Models.ApplicationDbContext _context;
 
-        public DeleteModel(Staffmeer.Server.Models.ApplicationContext context)
+        public DeleteModel(Staffmeer.Server.Models.ApplicationDbContext context)
         {
             _context = context;
         }

@@ -4,7 +4,28 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="smr-nav-menu-container">
+    <div class="smr-nav-menu">
+        <a class="smr-menu-item smr-nav-menu__orders" asp-area="" asp-page="/orders/index">
+            <h2 class="smr-menu-item-title">Заявки</h2>
+        </a>
+        <a class="smr-menu-item smr-nav-menu__employees" asp-area="" asp-page="/employees/index">
+            <h2 class="smr-menu-item-title">Сотрудники</h2>
+        </a>
+        <a class="smr-menu-item smr-nav-menu__departments" asp-area="" asp-page="/departments/index">
+            <h2 class="smr-menu-item-title">Департаменты</h2>
+        </a>
+        <a class="smr-menu-item smr-nav-menu__events" asp-area="" asp-page="/provisionrecords/index">
+            <h2 class="smr-menu-item-title">События</h2>
+        </a>
+        <a class="smr-menu-item smr-nav-menu__counterparties" asp-area="" asp-page="/counterparties/index">
+            <h2 class="smr-menu-item-title">Контрагенты</h2>
+        </a>
+        <a class="smr-menu-item smr-nav-menu__nomenclature" asp-area="" asp-page="/nomenclatures/index">
+            <h2 class="smr-menu-item-title">Номенклатура</h2>
+        </a>
+        <a class="smr-menu-item smr-nav-menu__other" asp-area="" asp-page="/other">
+            <h2 class="smr-menu-item-title">Иное</h2>
+        </a>
+    </div>
 </div>

@@ -11,9 +11,9 @@ namespace Staffmeer.Server.Pages.Employees
 {
     public class CreateModel : PageModel
     {
-        private readonly Staffmeer.Server.Models.ApplicationContext _context;
+        private readonly Staffmeer.Server.Models.ApplicationDbContext _context;
 
-        public CreateModel(Staffmeer.Server.Models.ApplicationContext context)
+        public CreateModel(Staffmeer.Server.Models.ApplicationDbContext context)
         {
             _context = context;
         }

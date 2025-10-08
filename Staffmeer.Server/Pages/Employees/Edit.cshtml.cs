@@ -12,9 +12,9 @@ namespace Staffmeer.Server.Pages.Employees
 {
     public class EditModel : PageModel
     {
-        private readonly Staffmeer.Server.Models.ApplicationContext _context;
+        private readonly Staffmeer.Server.Models.ApplicationDbContext _context;
 
-        public EditModel(Staffmeer.Server.Models.ApplicationContext context)
+        public EditModel(Staffmeer.Server.Models.ApplicationDbContext context)
         {
             _context = context;
         }

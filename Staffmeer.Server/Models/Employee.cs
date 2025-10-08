@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace Staffmeer.Server.Models;
 
 public partial class Employee
@@ -20,4 +18,6 @@ public partial class Employee
     public virtual ICollection<ProvisionRecord> ProvisionRecordEmployee1s { get; set; } = new List<ProvisionRecord>();
 
     public virtual ICollection<ProvisionRecord> ProvisionRecordEmployee2s { get; set; } = new List<ProvisionRecord>();
+
+    public string FullName => $"{LastName} {FirstName} {Patronymic}";
 }

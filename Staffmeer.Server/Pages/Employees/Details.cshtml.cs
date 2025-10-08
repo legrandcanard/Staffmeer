@@ -11,9 +11,9 @@ namespace Staffmeer.Server.Pages.Employees
 {
     public class DetailsModel : PageModel
     {
-        private readonly Staffmeer.Server.Models.ApplicationContext _context;
+        private readonly Staffmeer.Server.Models.ApplicationDbContext _context;
 
-        public DetailsModel(Staffmeer.Server.Models.ApplicationContext context)
+        public DetailsModel(Staffmeer.Server.Models.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -27,7 +27,9 @@ namespace Staffmeer.Server.Pages.Employees
                 return NotFound();
             }
 
-            var employee = await _context.Employees.FirstOrDefaultAsync(m => m.Id == id);
+            var employee = await _context.Employees
+                .Include(e => e.Department)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (employee == null)
             {
                 return NotFound();

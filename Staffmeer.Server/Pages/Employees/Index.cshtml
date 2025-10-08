@@ -2,53 +2,25 @@
 @model Staffmeer.Server.Pages.Employees.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Сотрудники";
 }
-
-<h1>Index</h1>
+<h1>
+    <a class="smr-link return-nav-link" asp-page="/Index"><span class="mdi mdi-arrow-left"></span></a> Сотрудники
+</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a class="btn btn-outline-primary" role="button" asp-page="Create">
+        <span class="mdi mdi-account-plus"></span> Добавить
+    </a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee[0].FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee[0].LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee[0].Patronymic)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee[0].Department)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Employee) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Patronymic)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Department.Id)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+
+<ul class="list-group">
+@foreach (var item in Model.Employee)
+{
+    <li class="list-group-item">
+        <span class="mdi mdi-account"></span> <a class="smr-link" asp-page="./Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.FullName)</a>
+        <br />
+        <small class="text-muted smr-employee-card__department">@Html.DisplayFor(modelItem => item.Department.Name)</small>
+    </li>
 }
-    </tbody>
-</table>
+</ul>

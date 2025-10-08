@@ -1,0 +1,63 @@
+﻿@page
+@model Staffmeer.Server.Pages.ProvisionRecords.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>ProvisionRecord</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProvisionRecord.Date" class="control-label"></label>
+                <input asp-for="ProvisionRecord.Date" class="form-control" />
+                <span asp-validation-for="ProvisionRecord.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProvisionRecord.Nomenclature1Id" class="control-label"></label>
+                <select asp-for="ProvisionRecord.Nomenclature1Id" class ="form-control" asp-items="ViewBag.Nomenclature1Id"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProvisionRecord.Nomenclature2Id" class="control-label"></label>
+                <select asp-for="ProvisionRecord.Nomenclature2Id" class ="form-control" asp-items="ViewBag.Nomenclature2Id"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProvisionRecord.Employee1Id" class="control-label"></label>
+                <select asp-for="ProvisionRecord.Employee1Id" class ="form-control" asp-items="ViewBag.Employee1Id"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProvisionRecord.Employee2Id" class="control-label"></label>
+                <select asp-for="ProvisionRecord.Employee2Id" class ="form-control" asp-items="ViewBag.Employee2Id"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProvisionRecord.CounterpartyId" class="control-label"></label>
+                <select asp-for="ProvisionRecord.CounterpartyId" class ="form-control" asp-items="ViewBag.CounterpartyId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProvisionRecord.ProvisionRecordTypeId" class="control-label"></label>
+                <select asp-for="ProvisionRecord.ProvisionRecordTypeId" class ="form-control" asp-items="ViewBag.ProvisionRecordTypeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProvisionRecord.Description" class="control-label"></label>
+                <input asp-for="ProvisionRecord.Description" class="form-control" />
+                <span asp-validation-for="ProvisionRecord.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
