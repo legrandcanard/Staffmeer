@@ -1,18 +1,13 @@
 ﻿@page
+@using Staffmeer.Server.Pages.Shared
 @model Staffmeer.Server.Pages.Employees.IndexModel
 
 @{
-    ViewData["Title"] = "Сотрудники";
+    string title = "Сотрудники";
+    ViewData["Title"] = title;
 }
-<h1>
-    <a class="smr-link return-nav-link" asp-page="/Index"><span class="mdi mdi-arrow-left"></span></a> Сотрудники
-</h1>
 
-<p>
-    <a class="btn btn-outline-primary" role="button" asp-page="Create">
-        <span class="mdi mdi-account-plus"></span> Добавить
-    </a>
-</p>
+@await Html.PartialAsync("IndexHeader", new IndexHeaderModel { HeaderTitle = title })
 
 <ul class="list-group">
 @foreach (var item in Model.Employee)

@@ -1,11 +1,11 @@
 ﻿@page
-@model Staffmeer.Server.Pages.Bandnames.DeleteModel
+@model Staffmeer.Server.Pages.Brandnames.DeleteModel
 
 @{
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+@await Html.PartialAsync("_ViewNavHeader", new ViewNavHeaderModel("Бренд", "Edit", Model.Brandname.Id))
 
 <h3>Are you sure you want to delete this?</h3>
 <div>

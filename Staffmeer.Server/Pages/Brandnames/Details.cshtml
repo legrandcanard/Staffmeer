@@ -1,11 +1,11 @@
 ﻿@page
-@model Staffmeer.Server.Pages.Bandnames.DetailsModel
+@model Staffmeer.Server.Pages.Brandnames.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Бренд";
 }
 
-<h1>Details</h1>
+@await Html.PartialAsync("_ViewNavHeader", new ViewNavHeaderModel("Бренд", "Index"))
 
 <div>
     <h4>Brandname</h4>

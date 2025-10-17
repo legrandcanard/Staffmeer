@@ -2,10 +2,10 @@
 @model Staffmeer.Server.Pages.Counterparties.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Контрагент";
 }
 
-<h1>Details</h1>
+@await Html.PartialAsync("_ViewNavHeader", new ViewNavHeaderModel("Контрагент", "Index"))
 
 <div>
     <h4>Counterparty</h4>
@@ -32,6 +32,5 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Counterparty.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a class="btn btn-outline-primary" role="button" asp-page="./Edit" asp-route-id="@Model.Counterparty.Id"><span class="mdi mdi-pencil"></span> Редактировать</a>
 </div>

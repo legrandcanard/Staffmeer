@@ -1,15 +1,14 @@
 ﻿@page
-@model Staffmeer.Server.Pages.Bandnames.IndexModel
+@using Staffmeer.Server.Pages.Shared
+@model Staffmeer.Server.Pages.Brandnames.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    string title = "Бренд";
+    ViewData["Title"] = title;
 }
 
-<h1>Index</h1>
+@await Html.PartialAsync("IndexHeader", new IndexHeaderModel { HeaderTitle = title })
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>

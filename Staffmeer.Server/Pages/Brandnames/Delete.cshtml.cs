@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Staffmeer.Server.Models;
 
-namespace Staffmeer.Server.Pages.Bandnames
+namespace Staffmeer.Server.Pages.Brandnames
 {
     public class DeleteModel : PageModel
     {

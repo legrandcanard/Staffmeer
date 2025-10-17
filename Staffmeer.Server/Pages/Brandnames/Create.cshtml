@@ -1,11 +1,12 @@
 ﻿@page
-@model Staffmeer.Server.Pages.Bandnames.EditModel
+@using Staffmeer.Server.Pages.Shared
+@model Staffmeer.Server.Pages.Brandnames.CreateModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = TextConstants.Create;
 }
 
-<h1>Edit</h1>
+@await Html.PartialAsync("_ViewNavHeader", new ViewNavHeaderModel(TextConstants.Create, "Index"))
 
 <h4>Brandname</h4>
 <hr />
@@ -13,21 +14,16 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Brandname.Id" />
             <div class="form-group">
                 <label asp-for="Brandname.Name" class="control-label"></label>
                 <input asp-for="Brandname.Name" class="form-control" />
                 <span asp-validation-for="Brandname.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-page="./Index">Back to List</a>
 </div>
 
 @section Scripts {

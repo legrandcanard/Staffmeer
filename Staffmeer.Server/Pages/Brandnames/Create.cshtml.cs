@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Staffmeer.Server.Models;
 
-namespace Staffmeer.Server.Pages.Bandnames
+namespace Staffmeer.Server.Pages.Brandnames
 {
     public class CreateModel : PageModel
     {

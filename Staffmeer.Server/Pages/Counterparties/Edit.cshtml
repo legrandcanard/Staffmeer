@@ -5,7 +5,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+@await Html.PartialAsync("_ViewNavHeader", new ViewNavHeaderModel(TextConstants.Edit, "Details", Model.Counterparty.Id))
 
 <h4>Counterparty</h4>
 <hr />

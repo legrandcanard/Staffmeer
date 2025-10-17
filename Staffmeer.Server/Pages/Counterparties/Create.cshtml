@@ -1,13 +1,14 @@
 ﻿@page
+@using Staffmeer.Server.Pages.Shared
 @model Staffmeer.Server.Pages.Counterparties.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = TextConstants.Create;
 }
 
-<h1>Create</h1>
+@await Html.PartialAsync("_ViewNavHeader", new ViewNavHeaderModel(TextConstants.Create, "Index"))
 
-<h4>Counterparty</h4>
+<h4>@TextConstants.Details</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -28,15 +29,11 @@
                 <input asp-for="Counterparty.Address" class="form-control" />
                 <span asp-validation-for="Counterparty.Address" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group mt-2">
+                @await Html.PartialAsync("_FormSaveButton")
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
 </div>
 
 @section Scripts {

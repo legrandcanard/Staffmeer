@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Staffmeer.Server.Models;
 
-namespace Staffmeer.Server.Pages.Bandnames
+namespace Staffmeer.Server.Pages.Brandnames
 {
     public class EditModel : PageModel
     {
