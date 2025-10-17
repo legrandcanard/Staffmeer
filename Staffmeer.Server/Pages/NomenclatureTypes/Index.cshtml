@@ -1,15 +1,14 @@
 ﻿@page
+@using Staffmeer.Server.Pages.Shared
 @model Staffmeer.Server.Pages.NomenclatureTypes.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    const string title = "Номенклатура (типы)";
+    ViewData["Title"] = title;
 }
 
-<h1>Index</h1>
+@await Html.PartialAsync("_IndexHeader", new IndexHeaderModel { HeaderTitle = title })
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>

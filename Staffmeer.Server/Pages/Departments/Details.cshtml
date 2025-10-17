@@ -2,13 +2,15 @@
 @model Staffmeer.Server.Pages.Departments.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Model.Departament.Name;
 }
 
-<h1>Details</h1>
+<h1>
+    <a class="smr-link return-nav-link" asp-page="./Index"><span class="mdi mdi-arrow-left"></span></a> Отдел
+</h1>
 
 <div>
-    <h4>Departament</h4>
+    <h4>Данные</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -20,6 +22,5 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Departament.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a class="btn btn-outline-primary" role="button" asp-page="./Edit" asp-route-id="@Model.Departament.Id"><span class="mdi mdi-pencil"></span> Редактировать</a>
 </div>

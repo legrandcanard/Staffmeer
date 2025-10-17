@@ -2,13 +2,15 @@
 @model Staffmeer.Server.Pages.Nomenclatures.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Model.Nomenclature.Name;
 }
 
-<h1>Details</h1>
+<h1>
+    <a class="smr-link return-nav-link" asp-page="./Index"><span class="mdi mdi-arrow-left"></span></a> Номенклатура
+</h1>
 
 <div>
-    <h4>Nomenclature</h4>
+    <h4>Данные</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -27,23 +29,23 @@
             @Html.DisplayNameFor(model => model.Nomenclature.Brandname)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nomenclature.Brandname.Id)
+            @Html.DisplayFor(model => model.Nomenclature.Brandname.Name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Nomenclature.Counterparty)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nomenclature.Counterparty.Id)
+            @Html.DisplayFor(model => model.Nomenclature.Counterparty.Name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Nomenclature.NomenclatureType)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nomenclature.NomenclatureType.Id)
+            @Html.DisplayFor(model => model.Nomenclature.NomenclatureType.Name)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Nomenclature.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a class="btn btn-outline-primary" role="button" asp-page="./Edit" asp-route-id="@Model.Nomenclature.Id"><span class="mdi mdi-pencil"></span> Редактировать</a>
 </div>
+

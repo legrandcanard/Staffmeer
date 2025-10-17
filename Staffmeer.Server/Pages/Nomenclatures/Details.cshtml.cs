@@ -27,7 +27,12 @@ namespace Staffmeer.Server.Pages.Nomenclatures
                 return NotFound();
             }
 
-            var nomenclature = await _context.Nomenclatures.FirstOrDefaultAsync(m => m.Id == id);
+            var nomenclature = await _context.Nomenclatures
+                .AsNoTracking()
+                .Include(n => n.Brandname)
+                .Include(n => n.Counterparty)
+                .Include(n => n.NomenclatureType)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (nomenclature == null)
             {
                 return NotFound();

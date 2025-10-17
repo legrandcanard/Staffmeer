@@ -1,0 +1,9 @@
+﻿@model Staffmeer.Server.Pages.Shared.IndexHeaderModel
+
+<h1>
+    <a class="smr-link return-nav-link" asp-page="/Index"><span class="mdi mdi-arrow-left"></span></a> @Model.HeaderTitle
+</h1>
+
+<p>
+    @await Html.PartialAsync("_CreateNavButton")
+</p>

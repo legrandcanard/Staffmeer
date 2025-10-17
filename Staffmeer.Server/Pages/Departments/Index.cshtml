@@ -1,36 +1,19 @@
 ﻿@page
+@using Staffmeer.Server.Pages.Shared
 @model Staffmeer.Server.Pages.Departments.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    string title = "Отделы";
+    ViewData["Title"] = title;
 }
 
-<h1>Index</h1>
+@await Html.PartialAsync("IndexHeader", new IndexHeaderModel { HeaderTitle = title })
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Departament[0].Name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Departament) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<ul class="list-group">
+    @foreach (var item in Model.Departament)
+    {
+        <li class="list-group-item">
+            <span class="mdi mdi-account-multiple"></span> <a class="smr-link" asp-page="./Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+        </li>
+    }
+</ul>
