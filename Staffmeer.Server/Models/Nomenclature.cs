@@ -7,9 +7,9 @@ public partial class Nomenclature
 {
     public int Id { get; set; }
 
-    public string SerialNumber { get; set; } = null!;
+    public string SerialNumber { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string Name { get; set; }
 
     public int NomenclatureTypeId { get; set; }
 
@@ -17,11 +17,11 @@ public partial class Nomenclature
 
     public int? CounterpartyId { get; set; }
 
-    public virtual Brandname Brandname { get; set; } = null!;
+    public virtual Brandname Brandname { get; set; }
 
-    public virtual Counterparty? Counterparty { get; set; }
+    public virtual Counterparty Counterparty { get; set; }
 
-    public virtual NomenclatureType NomenclatureType { get; set; } = null!;
+    public virtual NomenclatureType NomenclatureType { get; set; }
 
     public virtual ICollection<ProvisionRecord> ProvisionRecordNomenclature1s { get; set; } = new List<ProvisionRecord>();
 

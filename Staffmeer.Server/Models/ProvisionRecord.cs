@@ -21,17 +21,17 @@ public partial class ProvisionRecord
 
     public int ProvisionRecordTypeId { get; set; }
 
-    public string? Description { get; set; }
+    public string Description { get; set; }
 
-    public virtual Counterparty? Counterparty { get; set; }
+    public virtual Counterparty Counterparty { get; set; }
 
-    public virtual Employee Employee1 { get; set; } = null!;
+    public virtual Employee Employee1 { get; set; }
 
-    public virtual Employee Employee2 { get; set; } = null!;
+    public virtual Employee Employee2 { get; set; }
 
-    public virtual Nomenclature Nomenclature1 { get; set; } = null!;
+    public virtual Nomenclature Nomenclature1 { get; set; }
 
-    public virtual Nomenclature Nomenclature2 { get; set; } = null!;
+    public virtual Nomenclature Nomenclature2 { get; set; }
 
-    public virtual ProvisionRecordType ProvisionRecordType { get; set; } = null!;
+    public virtual ProvisionRecordType ProvisionRecordType { get; set; }
 }
