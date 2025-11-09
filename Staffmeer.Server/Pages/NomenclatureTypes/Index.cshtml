@@ -3,11 +3,11 @@
 @model Staffmeer.Server.Pages.NomenclatureTypes.IndexModel
 
 @{
-    const string title = "Номенклатура (типы)";
+    string title = "Номенклатура (типы)";
     ViewData["Title"] = title;
 }
 
-@await Html.PartialAsync("_IndexHeader", new IndexHeaderModel { HeaderTitle = title })
+@await Html.PartialAsync("IndexHeader", new IndexHeaderModel { HeaderTitle = title })
 
 <table class="table">
     <thead>
