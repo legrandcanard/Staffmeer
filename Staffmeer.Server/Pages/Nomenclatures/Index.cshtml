@@ -9,16 +9,20 @@
 
 @await Html.PartialAsync("IndexHeader", new IndexHeaderModel { HeaderTitle = title })
 
-<ul class="list-group">
-    @foreach (var item in Model.Nomenclature)
+@foreach (var group in Model.Nomenclature.GroupBy(n => n.NomenclatureType))
+{
+    <h4 class="mt-4">@group.Key.Name</h4>
+    <ul class="list-group">
+    @foreach(var item in group)
     {
         <li class="list-group-item">
             <span class="mdi mdi-desktop-classic"></span> <a class="smr-link" asp-page="./Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
             <small class="text-muted mt-1">№@Html.DisplayFor(modelItem => item.SerialNumber)</small>
             <br />
             <small class="text-muted mt-1">@Html.DisplayFor(modelItem => item.Brandname.Name)</small>
-            <br />
-            <small class="text-muted mt-1">@Html.DisplayFor(modelItem => item.NomenclatureType.Name)</small>
+@*             <br />
+            <small class="text-muted mt-1">@Html.DisplayFor(modelItem => item.NomenclatureType.Name)</small> *@
         </li>
     }
-</ul>
+    </ul>
+}
