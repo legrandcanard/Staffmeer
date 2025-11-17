@@ -2,20 +2,32 @@
 @model Staffmeer.Server.Pages.ProvisionRecords.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Событие #" + Model.ProvisionRecord.Id;
 }
 
-<h1>Details</h1>
+@await Html.PartialAsync("_ViewNavHeader", new ViewNavHeaderModel($"Событие", "./Index"))
 
 <div>
-    <h4>ProvisionRecord</h4>
+    <h4>Данные</h4>
     <hr />
     <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProvisionRecord.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProvisionRecord.Id)
+        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ProvisionRecord.Date)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProvisionRecord.Date)
+            @Model.ProvisionRecord.Date.ToString("dd.MM.yyyy HH:mm")
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProvisionRecord.ProvisionRecordType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProvisionRecord.ProvisionRecordType.Name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ProvisionRecord.Description)
@@ -27,41 +39,34 @@
             @Html.DisplayNameFor(model => model.ProvisionRecord.Counterparty)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProvisionRecord.Counterparty.Id)
+            @Html.DisplayFor(model => model.ProvisionRecord.Counterparty.Name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ProvisionRecord.Employee1)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProvisionRecord.Employee1.Id)
+            @Html.DisplayFor(model => model.ProvisionRecord.Employee1.FullName)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ProvisionRecord.Employee2)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProvisionRecord.Employee2.Id)
+            @Html.DisplayFor(model => model.ProvisionRecord.Employee2.FullName)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ProvisionRecord.Nomenclature1)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProvisionRecord.Nomenclature1.Id)
+            @Html.DisplayFor(model => model.ProvisionRecord.Nomenclature1.FullName)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ProvisionRecord.Nomenclature2)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProvisionRecord.Nomenclature2.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ProvisionRecord.ProvisionRecordType)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProvisionRecord.ProvisionRecordType.Id)
+            @Html.DisplayFor(model => model.ProvisionRecord.Nomenclature2.FullName)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.ProvisionRecord.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a class="btn btn-outline-primary" role="button" asp-page="./Edit" asp-route-id="@Model.ProvisionRecord.Id"><span class="mdi mdi-pencil"></span> Редактировать</a>
 </div>

@@ -13,28 +13,25 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ProvisionRecord[0].Date)
+                Дата
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProvisionRecord[0].Description)
+                Тип
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProvisionRecord[0].Counterparty)
+                Описание
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProvisionRecord[0].Employee1)
+                Контрагент
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProvisionRecord[0].Employee2)
+                Передал
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProvisionRecord[0].Nomenclature1)
+                Получил
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProvisionRecord[0].Nomenclature2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProvisionRecord[0].ProvisionRecordType)
+                Номенклатура
             </th>
             <th></th>
         </tr>
@@ -43,33 +40,28 @@
 @foreach (var item in Model.ProvisionRecord) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Date)
+                @item.Date.ToString("dd.MM.yyyy")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProvisionRecordType.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Counterparty.Id)
+                @Html.DisplayFor(modelItem => item.Counterparty.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Employee1.Id)
+                @Html.DisplayFor(modelItem => item.Employee1.ShortName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Employee2.Id)
+                @Html.DisplayFor(modelItem => item.Employee2.ShortName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Nomenclature1.Id)
+                @Html.DisplayFor(modelItem => item.Nomenclature1.FullName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Nomenclature2.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProvisionRecordType.Id)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <a class="smr-link text-color-main" asp-page="./Details" asp-route-id="@item.Id">Детали</a>
             </td>
         </tr>
 }

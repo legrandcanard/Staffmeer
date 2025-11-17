@@ -28,7 +28,16 @@ namespace Staffmeer.Server.Pages.ProvisionRecords
                 return NotFound();
             }
 
-            var provisionrecord = await _context.ProvisionRecords.FirstOrDefaultAsync(m => m.Id == id);
+            var provisionrecord = await _context.ProvisionRecords
+                .Include(p => p.Counterparty)
+                .Include(p => p.Employee1)
+                .Include(p => p.Employee2)
+                .Include(p => p.Nomenclature1)
+                    .ThenInclude(n => n.Brandname)
+                .Include(p => p.Nomenclature2)
+                    .ThenInclude(n => n.Brandname)
+                .Include(p => p.ProvisionRecordType)
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             if (provisionrecord == null)
             {

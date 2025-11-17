@@ -2,21 +2,33 @@
 @model Staffmeer.Server.Pages.ProvisionRecords.DeleteModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Удаление";
 }
 
-<h1>Delete</h1>
+@await Html.PartialAsync("_ViewNavHeader", new ViewNavHeaderModel("Удаление", "./Edit", @Model.ProvisionRecord.Id))
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Уверены, что хотите удалить запись?</h3>
 <div>
-    <h4>ProvisionRecord</h4>
+    <h4>Данные</h4>
     <hr />
     <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProvisionRecord.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProvisionRecord.Id)
+        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ProvisionRecord.Date)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProvisionRecord.Date)
+            @Model.ProvisionRecord.Date.ToString("dd.MM.yyyy HH:mm")
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProvisionRecord.ProvisionRecordType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProvisionRecord.ProvisionRecordType.Name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ProvisionRecord.Description)
@@ -28,43 +40,43 @@
             @Html.DisplayNameFor(model => model.ProvisionRecord.Counterparty)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProvisionRecord.Counterparty.Id)
+            @Html.DisplayFor(model => model.ProvisionRecord.Counterparty.Name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ProvisionRecord.Employee1)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProvisionRecord.Employee1.Id)
+            @Html.DisplayFor(model => model.ProvisionRecord.Employee1.FullName)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ProvisionRecord.Employee2)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProvisionRecord.Employee2.Id)
+            @Html.DisplayFor(model => model.ProvisionRecord.Employee2.FullName)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ProvisionRecord.Nomenclature1)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProvisionRecord.Nomenclature1.Id)
+            @Html.DisplayFor(model => model.ProvisionRecord.Nomenclature1.FullName)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ProvisionRecord.Nomenclature2)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProvisionRecord.Nomenclature2.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ProvisionRecord.ProvisionRecordType)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProvisionRecord.ProvisionRecordType.Id)
+            @Html.DisplayFor(model => model.ProvisionRecord.Nomenclature2.FullName)
         </dd>
     </dl>
     
     <form method="post">
         <input type="hidden" asp-for="ProvisionRecord.Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+        <button type="submit" class="btn btn-outline-danger">
+            <span class="mdi mdi-delete"></span>
+            Подтвердить удаление
+        </button>
+        <a class="btn btn-outline-primary" asp-page="./Edit" asp-route-id="@Model.ProvisionRecord.Id">
+            <span class="mdi mdi-window-close"></span>
+            Отмена
+        </a>
     </form>
 </div>

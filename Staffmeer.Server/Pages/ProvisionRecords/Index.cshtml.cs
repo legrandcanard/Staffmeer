@@ -27,7 +27,7 @@ namespace Staffmeer.Server.Pages.ProvisionRecords
                 .Include(p => p.Employee1)
                 .Include(p => p.Employee2)
                 .Include(p => p.Nomenclature1)
-                .Include(p => p.Nomenclature2)
+                    .ThenInclude(n => n.Brandname)
                 .Include(p => p.ProvisionRecordType)
                 .OrderByDescending(p => p.Date)
                 .ToListAsync();

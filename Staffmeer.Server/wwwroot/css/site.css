@@ -62,6 +62,10 @@ a.smr-link {
             background: var(--primary-color-dark)
         }
 
+.text-color-main {
+    color: var(--primary-color) !important;
+}
+
 main {
     padding: 10px 15px;
 }
