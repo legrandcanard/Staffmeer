@@ -8,7 +8,7 @@
 @await Html.PartialAsync("_ViewNavHeader", new ViewNavHeaderModel("Контрагент", "Index"))
 
 <div>
-    <h4>Counterparty</h4>
+    <h4>Данные</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -32,5 +32,5 @@
     </dl>
 </div>
 <div>
-    <a class="btn btn-outline-primary" role="button" asp-page="./Edit" asp-route-id="@Model.Counterparty.Id"><span class="mdi mdi-pencil"></span> Редактировать</a>
+    @await Html.PartialAsync("_FormLinkToEdit", Model.Counterparty.Id)
 </div>

@@ -6,5 +6,6 @@
         public const string Edit = "Редактирование";
         public const string Delete = "Удаление";
         public const string Details = "Данные";
+        public const string DeleteConfirmMessage = "Уверены, что хотите удалить запись?";
     }
 }

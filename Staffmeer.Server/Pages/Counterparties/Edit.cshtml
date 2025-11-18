@@ -2,12 +2,12 @@
 @model Staffmeer.Server.Pages.Counterparties.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = Model.Counterparty.Name;
 }
 
 @await Html.PartialAsync("_ViewNavHeader", new ViewNavHeaderModel(TextConstants.Edit, "Details", Model.Counterparty.Id))
 
-<h4>Counterparty</h4>
+<h4>Данные</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -29,15 +29,12 @@
                 <input asp-for="Counterparty.Address" class="form-control" />
                 <span asp-validation-for="Counterparty.Address" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-group mt-2">
+                @await Html.PartialAsync("_FormUpdateButton")
+                @await Html.PartialAsync("_FormLinkToDelete", Model.Counterparty.Id)
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-page="./Index">Back to List</a>
 </div>
 
 @section Scripts {
