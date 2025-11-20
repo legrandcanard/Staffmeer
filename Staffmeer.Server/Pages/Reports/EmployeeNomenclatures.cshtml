@@ -1,0 +1,23 @@
+﻿@page
+@model Staffmeer.Server.Pages.Reports.EmployeeNomenclaturesModel
+
+<h3><span class="mdi mdi-desktop-classic"></span> Номенклатура</h3>
+<h5>Сотрудник: @Html.DisplayFor(model => model.Employee.FullName)</h5>
+<hr />
+<ul class="list-group">
+@foreach (var item in Model.Nomenclatures)
+{
+    <li class="list-group-item">
+        <span class="mdi mdi-desktop-classic"></span> <a class="smr-link" asp-page="./Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+        <small class="text-muted mt-1">№@Html.DisplayFor(modelItem => item.SerialNumber)</small>
+        <br />
+        <small class="text-muted mt-1">@Html.DisplayFor(modelItem => item.Brandname.Name)</small>
+        <br />
+        <small class="text-muted mt-1">@Html.DisplayFor(modelItem => item.NomenclatureType.Name)</small>
+    </li>
+}
+</ul>
+@if (Model.Nomenclatures?.Length == 0)
+{
+    <h4 class="text-muted">Ничего не найдено :(</h4>
+}

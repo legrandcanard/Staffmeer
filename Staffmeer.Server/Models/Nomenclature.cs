@@ -20,11 +20,16 @@ public partial class Nomenclature
 
     public int? CounterpartyId { get; set; }
 
+    public int? EmployeeId { get; set; }
+
     [DisplayName("Бренд")]
     public virtual Brandname Brandname { get; set; }
 
     [DisplayName("Контрагент")]
     public virtual Counterparty Counterparty { get; set; }
+
+    [DisplayName("Сотрудник")]
+    public virtual Employee Employee { get; set; }
 
     [DisplayName("Тип номенклатуры")]
     public virtual NomenclatureType NomenclatureType { get; set; }

@@ -31,6 +31,7 @@ namespace Staffmeer.Server.Pages.Nomenclatures
                 .AsNoTracking()
                 .Include(n => n.Brandname)
                 .Include(n => n.Counterparty)
+                .Include(n => n.Employee)
                 .Include(n => n.NomenclatureType)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (nomenclature == null)

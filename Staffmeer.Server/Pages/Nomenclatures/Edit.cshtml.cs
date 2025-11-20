@@ -35,9 +35,10 @@ namespace Staffmeer.Server.Pages.Nomenclatures
                 return NotFound();
             }
             Nomenclature = nomenclature;
-           ViewData["BrandnameId"] = new SelectList(_context.Brandnames, "Id", "Id");
-           ViewData["CounterpartyId"] = new SelectList(_context.Counterparties, "Id", "Id");
-           ViewData["NomenclatureTypeId"] = new SelectList(_context.NomenclatureTypes, "Id", "Id");
+            ViewData["BrandnameId"] = new SelectList(_context.Brandnames, "Id", "Id");
+            ViewData["CounterpartyId"] = new SelectList(_context.Counterparties, "Id", "Id");
+            ViewData["NomenclatureTypeId"] = new SelectList(_context.NomenclatureTypes, "Id", "Id");
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Id");
             return Page();
         }
 
