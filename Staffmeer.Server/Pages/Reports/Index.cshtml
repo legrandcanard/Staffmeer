@@ -1,6 +1,7 @@
 ﻿@page
 @model Staffmeer.Server.Pages.Reports.ReportsModel
 @{
+    ViewData["Title"] = "Отчёты";
 }
 
 <ul>
@@ -8,7 +9,7 @@
         <a class="smr-link text-color-main" asp-page="EmployeeNomenclatures/Select">Номертклатура, закреплённная за сотрудником</a>
     </li>
     <li>
-        <a class="smr-link text-color-main" asp-page="">Комплектующие устройства (номенклатуры)</a>
+        <a class="smr-link text-color-main" asp-page="DeviceParts/Select">Комплектующие устройства (номенклатуры)</a>
     </li>
     <li>
         <a class="smr-link text-color-main" asp-page="">Журнал событий по номенклатуре</a>
@@ -17,9 +18,3 @@
         <a class="smr-link text-color-main" asp-page="">Поставки контрагента</a>
     </li>
 </ul>
-
-<div class="form-group">
-    <label class="control-label">Select</label>
-    <select class="form-control"></select>
-    <span class="text-danger"></span>
-</div>

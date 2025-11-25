@@ -5,24 +5,23 @@ using Staffmeer.Server.Models;
 
 namespace Staffmeer.Server.Pages.Reports
 {
-    public class EmployeeNomenclaturesModel(ApplicationDbContext context) : PageModel
+    public class DevicePartsModel(ApplicationDbContext context) : PageModel
     {
-        public Employee Employee { get; set; } = default!;
+        public Nomenclature Nomenclature { get; set; } = default!;
         public Nomenclature[] Nomenclatures { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            Employee = await context.Employees
-                .Include(e => e.Department)
+            Nomenclature = await context.Nomenclatures
                 .FirstOrDefaultAsync(e => e.Id == id);
 
-            if (Employee is null)
+            if (Nomenclature is null)
                 return NotFound();
 
             Nomenclatures = await context.Nomenclatures
                 .Include(n => n.Brandname)
                 .Include(n => n.NomenclatureType)
-                .Where(e => e.EmployeeId == id)
+                .Where(e => e.ParentId == id)
                 .ToArrayAsync();
 
             return Page();

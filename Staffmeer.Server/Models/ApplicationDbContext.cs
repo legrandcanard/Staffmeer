@@ -90,6 +90,10 @@ public partial class ApplicationDbContext : DbContext
                 .HasForeignKey(d => d.NomenclatureTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Nomenclature_NomenclatureType");
+            entity.HasOne(e => e.Parent)
+                .WithMany(e => e.Children)
+                .HasForeignKey(e => e.ParentId)
+                .HasConstraintName("FK_Parent");
         });
 
         modelBuilder.Entity<NomenclatureType>(entity =>

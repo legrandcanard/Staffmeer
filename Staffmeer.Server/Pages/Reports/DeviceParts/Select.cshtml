@@ -1,20 +1,21 @@
 ﻿@page
+@using Microsoft.EntityFrameworkCore
 @inject Staffmeer.Server.Models.ApplicationDbContext context
 
 @{
-	var title = "Номертклатура, закреплённная за сотрудником";
+	var title = "Комплектующие устройства (номенклатуры)";
 	ViewData["Title"] = title;
 
-	var items = context.Employees.Select(e => new { e.Id, e.ShortName }).ToList();
-	items.Insert(0, new { Id = 0, ShortName = "" });
-	var list = new SelectList(items, "Id", "ShortName");
+	var items = context.Nomenclatures.Include(n => n.Brandname).Select(e => new { e.Id, Text = e.FullName }).ToList();
+	items.Insert(0, new { Id = 0, Text = "(не выбрано)" });
+	var list = new SelectList(items, "Id", "Text");
 }
 
 <h3>Отчёт</h3>
 <h4>@title</h4>
 <hr />
 <div class="form-group">
-	<label class="control-label">Сотрудник</label>
+	<label class="control-label">Номенклатура</label>
 	<select id="options-list" class="form-control" asp-items="list" autocomplete="off"></select>
 </div>
 <a id="btnCreateReport" class="btn btn-outline-primary mt-3 disabled" role="button" asp-page="Index" asp-route-id="0"><span class="mdi mdi-file-document-outline"></span> Сформировать</a>

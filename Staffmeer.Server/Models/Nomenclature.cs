@@ -22,6 +22,8 @@ public partial class Nomenclature
 
     public int? EmployeeId { get; set; }
 
+    public int? ParentId { get; set; }
+
     [DisplayName("Бренд")]
     public virtual Brandname Brandname { get; set; }
 
@@ -31,10 +33,15 @@ public partial class Nomenclature
     [DisplayName("Сотрудник")]
     public virtual Employee Employee { get; set; }
 
+    [DisplayName("Закреплено за")]
+    public virtual Nomenclature Parent { get; set; }
+
     [DisplayName("Тип номенклатуры")]
     public virtual NomenclatureType NomenclatureType { get; set; }
 
     public virtual ICollection<ProvisionRecord> ProvisionRecordNomenclature1s { get; set; } = new List<ProvisionRecord>();
 
     public virtual ICollection<ProvisionRecord> ProvisionRecordNomenclature2s { get; set; } = new List<ProvisionRecord>();
+
+    public virtual ICollection<Nomenclature> Children { get; set; } = new List<Nomenclature>();
 }

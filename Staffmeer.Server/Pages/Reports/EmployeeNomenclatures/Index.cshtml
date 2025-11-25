@@ -1,8 +1,19 @@
 ﻿@page
 @model Staffmeer.Server.Pages.Reports.EmployeeNomenclaturesModel
+@{
+    var title = "Номертклатура, закреплённная за сотрудником";
+    ViewData["Title"] = title;
+}
 
 <h3><span class="mdi mdi-desktop-classic"></span> Номенклатура</h3>
-<h5>Сотрудник: @Html.DisplayFor(model => model.Employee.FullName)</h5>
+<div class="d-flex">
+    <h5>Сотрудник: @Html.Raw($"{Model.Employee.FullName} ({(Model.Employee.Department.Name)})")</h5>
+    <div class="ms-auto">
+        <a class="btn btn-outline-primary" role="button" href="/Counterparties/Create">
+            <span class="mdi mdi-printer"></span> Печать
+        </a>
+    </div>
+</div>
 <hr />
 <ul class="list-group">
 @foreach (var item in Model.Nomenclatures)
@@ -19,5 +30,5 @@
 </ul>
 @if (Model.Nomenclatures?.Length == 0)
 {
-    <h4 class="text-muted">Ничего не найдено :(</h4>
+    <h4 class="text-muted">Ничего не найдено</h4>
 }
