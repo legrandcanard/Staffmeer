@@ -1,0 +1,38 @@
+﻿@page
+@model Staffmeer.Server.Pages.Orders.IndexModel
+@{
+}
+
+<h3><span class="mdi mdi-invoice-text-plus"></span> Новая заявка</h3>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NomenclatureId" class="control-label"></label>
+                <select asp-for="NomenclatureId" class="form-control" asp-items="ViewBag.NomenclatureId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProvisionRecordTypeId" class="control-label"></label>
+                <select asp-for="ProvisionRecordTypeId" class="form-control" asp-items="ViewBag.ProvisionRecordTypeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" type="date" asp-format="{0:dd.MM.yyyy}" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <button type="submit" class="btn btn-outline-primary">
+                    <span class="mdi mdi-content-save"></span>
+                    Сохранить
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

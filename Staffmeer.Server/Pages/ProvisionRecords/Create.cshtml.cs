@@ -20,12 +20,12 @@ namespace Staffmeer.Server.Pages.ProvisionRecords
 
         public IActionResult OnGet()
         {
-        ViewData["CounterpartyId"] = new SelectList(_context.Counterparties, "Id", "Id");
-        ViewData["Employee1Id"] = new SelectList(_context.Employees, "Id", "Id");
-        ViewData["Employee2Id"] = new SelectList(_context.Employees, "Id", "Id");
-        ViewData["Nomenclature1Id"] = new SelectList(_context.Nomenclatures, "Id", "Id");
-        ViewData["Nomenclature2Id"] = new SelectList(_context.Nomenclatures, "Id", "Id");
-        ViewData["ProvisionRecordTypeId"] = new SelectList(_context.ProvisionRecordTypes, "Id", "Id");
+            ViewData["CounterpartyId"] = new SelectList(_context.Counterparties, "Id", "Id");
+            ViewData["Employee1Id"] = new SelectList(_context.Employees, "Id", "Id");
+            ViewData["Employee2Id"] = new SelectList(_context.Employees, "Id", "Id");
+            ViewData["Nomenclature1Id"] = new SelectList(_context.Nomenclatures, "Id", "Id");
+            ViewData["Nomenclature2Id"] = new SelectList(_context.Nomenclatures, "Id", "Id");
+            ViewData["ProvisionRecordTypeId"] = new SelectList(_context.ProvisionRecordTypes, "Id", "Id");
             return Page();
         }
 
