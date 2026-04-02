@@ -91,13 +91,13 @@ using (var scope = app.Services.CreateScope())
     var idDb = services.GetRequiredService<ApplicationIdentityDbContext>();
     idDb.Database.Migrate();
 
-    var emp = await db.Employees.FirstOrDefaultAsync(e => e.LastName == "Admin" && e.FirstName == "Admin");
+/*    var emp = await db.Employees.FirstOrDefaultAsync(e => e.LastName == "Admin" && e.FirstName == "Admin");
     if (emp == null)
     {
         emp = new Employee { FirstName = "Admin", LastName = "Admin", Patronymic = string.Empty, DepartmentId = 1 };
         db.Employees.Add(emp);
         await db.SaveChangesAsync();
-    }
+    }*/
 
     // ensure role
     if (!await roleManager.RoleExistsAsync("Admin"))
@@ -107,7 +107,7 @@ using (var scope = app.Services.CreateScope())
     var adminUser = await userManager.FindByNameAsync("admin");
     if (adminUser == null)
     {
-        adminUser = new ApplicationUser { UserName = "admin", Email = "admin@local", EmployeeId = emp.Id, EmailConfirmed = true };
+        adminUser = new ApplicationUser { UserName = "admin", Email = "admin@local", EmployeeId = null, EmailConfirmed = true };
         var res = await userManager.CreateAsync(adminUser, "P@ssw0rd!");
         if (res.Succeeded)
             await userManager.AddToRoleAsync(adminUser, "Admin");
