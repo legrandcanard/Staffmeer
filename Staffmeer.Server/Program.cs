@@ -88,15 +88,13 @@ using (var scope = app.Services.CreateScope())
     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
     var roleManager = services.GetRequiredService<RoleManager<IdentityRole<int>>>();
 
-    // ensure identity schema is applied
     var idDb = services.GetRequiredService<ApplicationIdentityDbContext>();
     idDb.Database.Migrate();
 
-    // ensure employee exists (create if needed)
     var emp = await db.Employees.FirstOrDefaultAsync(e => e.LastName == "Admin" && e.FirstName == "Admin");
     if (emp == null)
     {
-        emp = new Employee { FirstName = "Admin", LastName = "User", Patronymic = string.Empty, DepartmentId = /* valid dept id */ 1 };
+        emp = new Employee { FirstName = "Admin", LastName = "Admin", Patronymic = string.Empty, DepartmentId = 1 };
         db.Employees.Add(emp);
         await db.SaveChangesAsync();
     }
