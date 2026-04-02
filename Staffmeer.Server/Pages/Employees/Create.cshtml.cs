@@ -21,7 +21,7 @@ namespace Staffmeer.Server.Pages.Employees
 
         public IActionResult OnGet()
         {
-        ViewData["DepartmentId"] = new SelectList(_context.Departaments, "Id", "Id");
+            ViewData["DepartmentId"] = new SelectList(_context.Departaments, "Id", "Name");
             return Page();
         }
 
