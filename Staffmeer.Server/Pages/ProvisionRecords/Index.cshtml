@@ -9,61 +9,108 @@
 
 @await Html.PartialAsync("IndexHeader", new IndexHeaderModel { HeaderTitle = title })
 
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">Фильтры</h5>
+        <form method="get" class="row g-3">
+            <div class="col-md-2">
+                <label for="DateFrom" class="form-label">От даты</label>
+                <input type="date" id="DateFrom" name="DateFrom" class="form-control" asp-for="DateFrom" />
+            </div>
+            <div class="col-md-2">
+                <label for="DateTo" class="form-label">До даты</label>
+                <input type="date" id="DateTo" name="DateTo" class="form-control" asp-for="DateTo" />
+            </div>
+            <div class="col-md-2">
+                <label for="ProvisionRecordTypeId" class="form-label">Тип</label>
+                <select id="ProvisionRecordTypeId" name="ProvisionRecordTypeId" class="form-select" asp-for="ProvisionRecordTypeId">
+                    <option value="">-- Все --</option>
+                    @foreach (var type in Model.RecordTypes)
+                    {
+                        <option value="@type.Id">@type.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="Description" class="form-label">Описание</label>
+                <input type="text" id="Description" name="Description" class="form-control" asp-for="Description" placeholder="Поиск..." />
+            </div>
+            <div class="col-md-2">
+                <label for="CounterpartyId" class="form-label">Контрагент</label>
+                <select id="CounterpartyId" name="CounterpartyId" class="form-select" asp-for="CounterpartyId">
+                    <option value="">-- Все --</option>
+                    @foreach (var counterparty in Model.Counterparties)
+                    {
+                        <option value="@counterparty.Id">@counterparty.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="Employee1Id" class="form-label">Передал</label>
+                <select id="Employee1Id" name="Employee1Id" class="form-select" asp-for="Employee1Id">
+                    <option value="">-- Все --</option>
+                    @foreach (var emp in Model.Employees)
+                    {
+                        <option value="@emp.Id">@emp.LastName @emp.FirstName</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="Employee2Id" class="form-label">Получил</label>
+                <select id="Employee2Id" name="Employee2Id" class="form-select" asp-for="Employee2Id">
+                    <option value="">-- Все --</option>
+                    @foreach (var emp in Model.Employees)
+                    {
+                        <option value="@emp.Id">@emp.LastName @emp.FirstName</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="Nomenclature1Id" class="form-label">Номенклатура</label>
+                <select id="Nomenclature1Id" name="Nomenclature1Id" class="form-select" asp-for="Nomenclature1Id">
+                    <option value="">-- Все --</option>
+                    @foreach (var nom in Model.Nomenclatures)
+                    {
+                        <option value="@nom.Id">@nom.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Применить фильтры</button>
+                <a asp-page="Index" class="btn btn-secondary">Очистить</a>
+            </div>
+        </form>
+    </div>
+</div>
+
 <table class="table">
     <thead>
         <tr>
-            <th>
-                Дата
-            </th>
-            <th>
-                Тип
-            </th>
-            <th>
-                Описание
-            </th>
-            <th>
-                Контрагент
-            </th>
-            <th>
-                Передал
-            </th>
-            <th>
-                Получил
-            </th>
-            <th>
-                Номенклатура
-            </th>
+            <th>Дата</th>
+            <th>Тип</th>
+            <th>Описание</th>
+            <th>Контрагент</th>
+            <th>Передал</th>
+            <th>Получил</th>
+            <th>Номенклатура</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.ProvisionRecord) {
-        <tr>
-            <td>
-                @item.Date.ToString("dd.MM.yyyy")
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProvisionRecordType.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Counterparty.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee1.ShortName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee2.ShortName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nomenclature1.FullName)
-            </td>
-            <td>
-                <a class="smr-link text-color-main" asp-page="./Details" asp-route-id="@item.Id">Детали</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.ProvisionRecord)
+        {
+            <tr>
+                <td>@item.Date.ToString("dd.MM.yyyy")</td>
+                <td>@Html.DisplayFor(modelItem => item.ProvisionRecordType.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.Counterparty.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Employee1.ShortName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Employee2.ShortName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Nomenclature1.FullName)</td>
+                <td>
+                    <a class="smr-link text-color-main" asp-page="./Details" asp-route-id="@item.Id">Детали</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
