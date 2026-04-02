@@ -6,14 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Staffmeer.Server.Models;
+using Staffmeer.Server.Models.Contexts;
 
 namespace Staffmeer.Server.Pages.Nomenclatures
 {
     public class DeleteModel : PageModel
     {
-        private readonly Staffmeer.Server.Models.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public DeleteModel(Staffmeer.Server.Models.ApplicationDbContext context)
+        public DeleteModel(ApplicationDbContext context)
         {
             _context = context;
         }

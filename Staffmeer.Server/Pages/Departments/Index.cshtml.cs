@@ -6,14 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Staffmeer.Server.Models;
+using Staffmeer.Server.Models.Contexts;
 
 namespace Staffmeer.Server.Pages.Departments
 {
     public class IndexModel : PageModel
     {
-        private readonly Staffmeer.Server.Models.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public IndexModel(Staffmeer.Server.Models.ApplicationDbContext context)
+        public IndexModel(ApplicationDbContext context)
         {
             _context = context;
         }

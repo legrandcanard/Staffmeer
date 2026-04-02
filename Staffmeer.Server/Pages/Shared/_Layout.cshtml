@@ -46,6 +46,18 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">Staffmeer</a>
+                <div>
+                    @if (User?.Identity?.IsAuthenticated ?? false)
+                    {
+                        <span class="me-3">Вы вошли как <strong>@User.Identity?.Name</strong></span>
+                        <form method="post" asp-controller="Auth" asp-action="Logout" style="display:inline;">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                <span class="mdi mdi-logout"></span> Выйти
+                            </button>
+                        </form>
+                    }
+                </div>
             </div>
         </nav>
     </header>

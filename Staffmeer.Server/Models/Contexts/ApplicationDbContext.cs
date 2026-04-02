@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Staffmeer.Server.Models;
+namespace Staffmeer.Server.Models.Contexts;
 
 public partial class ApplicationDbContext : DbContext
 {

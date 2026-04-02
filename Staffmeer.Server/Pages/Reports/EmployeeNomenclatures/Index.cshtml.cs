@@ -2,8 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Staffmeer.Server.Models;
+using Staffmeer.Server.Models.Contexts;
 
-namespace Staffmeer.Server.Pages.Reports
+namespace Staffmeer.Server.Pages.Reports.EmployeeNomenclatures
 {
     public class EmployeeNomenclaturesModel(ApplicationDbContext context) : PageModel
     {

@@ -7,14 +7,15 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Staffmeer.Server.Models;
+using Staffmeer.Server.Models.Contexts;
 
 namespace Staffmeer.Server.Pages.NomenclatureTypes
 {
     public class EditModel : PageModel
     {
-        private readonly Staffmeer.Server.Models.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public EditModel(Staffmeer.Server.Models.ApplicationDbContext context)
+        public EditModel(ApplicationDbContext context)
         {
             _context = context;
         }

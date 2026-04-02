@@ -6,14 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Staffmeer.Server.Models;
+using Staffmeer.Server.Models.Contexts;
 
 namespace Staffmeer.Server.Pages.Nomenclatures
 {
     public class CreateModel : PageModel
     {
-        private readonly Staffmeer.Server.Models.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public CreateModel(Staffmeer.Server.Models.ApplicationDbContext context)
+        public CreateModel(ApplicationDbContext context)
         {
             _context = context;
         }
