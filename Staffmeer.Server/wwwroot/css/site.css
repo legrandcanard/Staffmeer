@@ -144,8 +144,16 @@ body {
     color: var(--text-color-light);
     text-decoration: none;
     transition: background-color 0.2s ease;
+    position: relative;
+    overflow: hidden;
 }
-    
+
+    .smr-menu-item > img {
+        display: block;
+        margin: 15px auto auto auto;
+        filter: drop-shadow(0px 0px 15px #762b0a);
+    }
+
     a.smr-menu-item:hover {
         background: var(--primary-color-dark);
     }

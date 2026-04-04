@@ -22,14 +22,14 @@
                 <input type="date" id="DateTo" name="DateTo" class="form-control" asp-for="DateTo" />
             </div>
             <div class="col-md-2">
-                <label for="ProvisionRecordTypeId" class="form-label">Тип</label>
-                <select id="ProvisionRecordTypeId" name="ProvisionRecordTypeId" class="form-select" asp-for="ProvisionRecordTypeId">
-                    <option value="">-- Все --</option>
+                <label for="ProvisionRecordTypeIds" class="form-label">Тип</label>
+                <select id="ProvisionRecordTypeIds" name="ProvisionRecordTypeIds" class="form-select" multiple asp-for="ProvisionRecordTypeIds">
                     @foreach (var type in Model.RecordTypes)
                     {
                         <option value="@type.Id">@type.Name</option>
                     }
                 </select>
+                <small class="form-text text-muted">Зажмите Ctrl для выбора нескольких</small>
             </div>
             <div class="col-md-2">
                 <label for="Description" class="form-label">Описание</label>

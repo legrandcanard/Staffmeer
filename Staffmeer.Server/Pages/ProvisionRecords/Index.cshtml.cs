@@ -29,7 +29,7 @@ namespace Staffmeer.Server.Pages.ProvisionRecords
         public DateTime? DateTo { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public int? ProvisionRecordTypeId { get; set; }
+        public int[] ProvisionRecordTypeIds { get; set; } = Array.Empty<int>();
 
         [BindProperty(SupportsGet = true)]
         public string Description { get; set; }
@@ -81,9 +81,10 @@ namespace Staffmeer.Server.Pages.ProvisionRecords
                 query = query.Where(p => p.Date <= DateTo.Value.AddDays(1)); // Include entire day
             }
 
-            if (ProvisionRecordTypeId.HasValue)
+            // Multi-select filter for ProvisionRecordType
+            if (ProvisionRecordTypeIds != null && ProvisionRecordTypeIds.Length > 0)
             {
-                query = query.Where(p => p.ProvisionRecordTypeId == ProvisionRecordTypeId.Value);
+                query = query.Where(p => ProvisionRecordTypeIds.Contains(p.ProvisionRecordTypeId));
             }
 
             if (!string.IsNullOrWhiteSpace(Description))
