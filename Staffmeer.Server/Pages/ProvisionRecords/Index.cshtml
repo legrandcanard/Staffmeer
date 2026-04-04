@@ -21,17 +21,30 @@
                 <label for="DateTo" class="form-label">До даты</label>
                 <input type="date" id="DateTo" name="DateTo" class="form-control" asp-for="DateTo" />
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <label for="ProvisionRecordTypeIds" class="form-label">Тип</label>
-                <select id="ProvisionRecordTypeIds" name="ProvisionRecordTypeIds" class="form-select" multiple asp-for="ProvisionRecordTypeIds">
+                <select id="ProvisionRecordTypeIds"
+                        name="ProvisionRecordTypeIds"
+                        class="selectpicker form-control"
+                        title="Выберите типы"
+                        data-none-selected-text="Выберите типы"
+                        data-deselect-all-text="Сброс"
+                        data-select-all-text="Выбрать все"
+                        data-count-selected-text="{0} выбрано"
+                        multiple
+                        data-live-search="true"
+                        data-actions-box="true"
+                        data-selected-text-format="count > 2"
+                        asp-for="ProvisionRecordTypeIds">
                     @foreach (var type in Model.RecordTypes)
                     {
-                        <option value="@type.Id">@type.Name</option>
+                        <option value="@type.Id" selected="@(Model.ProvisionRecordTypeIds != null && Model.ProvisionRecordTypeIds.Contains(type.Id) ? "selected" : null)">
+                            @type.Name
+                        </option>
                     }
                 </select>
-                <small class="form-text text-muted">Зажмите Ctrl для выбора нескольких</small>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <label for="Description" class="form-label">Описание</label>
                 <input type="text" id="Description" name="Description" class="form-control" asp-for="Description" placeholder="Поиск..." />
             </div>
@@ -114,3 +127,19 @@
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        $(function () {
+            // initialize bootstrap-select with a fallback option for empty selection text
+            $('#ProvisionRecordTypeIds').selectpicker();
+
+            var selected = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.ProvisionRecordTypeIds ?? Array.Empty<int>()));
+            if (selected && selected.length) {
+                $('#ProvisionRecordTypeIds').selectpicker('val', selected);
+            } else {
+                $('#ProvisionRecordTypeIds').selectpicker('render');
+            }
+        });
+    </script>
+}
